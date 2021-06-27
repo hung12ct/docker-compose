@@ -12,12 +12,19 @@ services:
       - "5000:5000"
     # Mount volume
     volumes:
-      - ".:/code"
+      - ".:/exercise_3"
 
     # Link database container to app container
     # for rechability.
     links:
-      - "database:backenddb"
+      - "database:exercisedb"
+
+    command: ["flask", "run"]
+
+    environment:
+      - "FLASK_RUN_HOST=0.0.0.0"
+
+
     depends_on:
       - database
 
